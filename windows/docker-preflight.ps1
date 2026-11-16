@@ -66,12 +66,12 @@ function Write-DockerPreflight {
         'ready' { Write-Host '[READY] Docker Linux engine 與 Compose 已就緒。' -ForegroundColor Green }
         'cli-missing' {
             Write-Host '[DOCKER_CLI_MISSING] Windows 找不到 Docker 指令；目前尚未安裝龍蝦。' -ForegroundColor Yellow
-            Write-Host '沒有 Docker Desktop：先雙擊 0-INSTALL-DOCKER-DESKTOP.bat，完成後開啟 Docker Desktop。'
+            Write-Host '沒有 Docker Desktop：先雙擊 1-INSTALL-DOCKER-DESKTOP.bat，完成後開啟 Docker Desktop。'
             Write-Host '只有 WSL 裡有 Docker：請在該 WSL 的解壓資料夾內執行 bash linux/docker-install.sh。'
             Write-Host '已裝 Desktop 但仍找不到：先修復安裝或確認其安裝位置，不要反覆重裝龍蝦。'
         }
         'compose-missing' { Write-Host '[COMPOSE_MISSING] 已找到 Docker，但缺少 Compose；請檢查／更新自己的 Docker Desktop，不是重裝龍蝦。' -ForegroundColor Yellow }
-        'engine-unavailable' { Write-Host '[ENGINE_UNAVAILABLE] 已找到 Docker 指令，但引擎無法連線；請開啟 Docker Desktop 並等它啟動完成，再執行 DOCKER-CHECK.bat。' -ForegroundColor Yellow }
+        'engine-unavailable' { Write-Host '[ENGINE_UNAVAILABLE] 已找到 Docker 指令，但引擎無法連線；請開啟 Docker Desktop 並等它啟動完成，再執行 2-DOCKER-CHECK.bat。' -ForegroundColor Yellow }
         'windows-containers' { Write-Host '[LINUX_ENGINE_REQUIRED] Docker 正在使用 Windows containers；本包需要 Linux containers。請從 Docker Desktop 切換後再檢查。' -ForegroundColor Yellow }
         default { Write-Host '[ENGINE_UNKNOWN] 無法確認 Linux engine；停止安裝，不修改現有容器。' -ForegroundColor Yellow }
     }

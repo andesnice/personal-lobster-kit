@@ -3,7 +3,7 @@
 try {
     $existing = Resolve-DockerExecutable
     if ($existing) {
-        Write-Host '已找到 Windows Docker 指令，不重複安裝。請開啟 Docker Desktop，再執行 DOCKER-CHECK.bat。'
+        Write-Host '已找到 Windows Docker 指令，不重複安裝。請開啟 Docker Desktop，再執行 2-DOCKER-CHECK.bat。'
         exit 0
     }
     $architecture = $env:PROCESSOR_ARCHITEW6432
@@ -21,7 +21,7 @@ try {
     $process = Start-Process -FilePath $installer -Wait -PassThru
     if ($process.ExitCode -notin @(0, 3010)) { throw ('Docker installer ended with exit code ' + $process.ExitCode + '. Complete its displayed requirements before retrying.') }
     Write-Host '請依安裝器提示重新開機（若有），再從開始選單開啟 Docker Desktop，完成首次設定並等引擎啟動。'
-    Write-Host '接著執行 DOCKER-CHECK.bat；顯示 READY 後才執行 DOCKER-INSTALL.bat 安裝龍蝦。'
+    Write-Host '接著執行 2-DOCKER-CHECK.bat；顯示 READY 後才執行 3-DOCKER-INSTALL.bat 安裝龍蝦。'
     Write-Host ('官方安裝檔保留於：' + $installer + '；不需要時可自行刪除這個下載資料夾。')
 } catch {
     Write-Host ('STOP: ' + $_.Exception.Message) -ForegroundColor Red

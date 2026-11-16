@@ -69,7 +69,7 @@ try {
         if (-not $healthy) { throw 'Gateway health not confirmed. Use logs; do not reset/delete the volume.' }
         Write-Host 'Gateway health passed. First real AI reply still requires your own chat test.'
         Compose exec -T gateway node /app/openclaw.mjs --profile personal-lobster dashboard --no-open
-        Write-Host 'If the local page asks for Gateway secret, use windows/DOCKER-TOKEN.bat. This is separate from the Codex device code; do not reinstall.'
+        Write-Host 'If the local page asks for Gateway secret, use 5-DOCKER-TOKEN.bat. This is separate from the Codex device code; do not reinstall.'
     } elseif ($Action -eq 'token') {
         if (-not $gatewayWasRunning) { throw 'Start the owned Gateway first, then use the token entrypoint in your own interactive terminal.' }
         Write-Host 'Gateway token is for YOUR local web page only. Do not paste it into chat, screenshots or diagnostic logs.'

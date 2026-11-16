@@ -8,8 +8,8 @@
 
 1. 備份原解壓資料夾後，可把新版`windows/`與`docker/run.sh`同名檔案合併到原安裝資料夾；同時放入新版根目錄`CHECK-SAFE.bat`、`CHECK-SAFE.ps1`與`check-state.cjs`。保留原.env、compose.yaml、settings.json、使用者自訂檔。
 2. 檔案仍須和原compose.yaml處於完整目錄結構；不用改project名或另建volume。
-3. 執行原位置的DOCKER-CHECK，再執行DOCKER-START；運行中只resume，不重裝。
-4. 若需要控制台憑證，用DOCKER-TOKEN；token只在本人終端與本人本機網頁流轉。
+3. 執行原位置的2-DOCKER-CHECK，再執行4-DOCKER-START；運行中只resume，不重裝。
+4. 若需要控制台憑證，用5-DOCKER-TOKEN；token只在本人終端與本人本機網頁流轉。
 
 自訂過啟動器者先比較diff，不盲目覆蓋；共享規範只更新已採用的內容。
 

@@ -1,7 +1,7 @@
 @echo off
 setlocal
 chcp 65001 >nul
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0install-docker-desktop.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0windows\docker.ps1" token
 set "result=%ERRORLEVEL%"
 echo.
 pause

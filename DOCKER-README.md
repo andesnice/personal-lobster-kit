@@ -2,24 +2,24 @@
 
 ## 你這次應該用哪個
 
-第一次建立這份獨立龍蝦時用 `windows/DOCKER-INSTALL.bat`；已完成安裝後，日常只用 `windows/DOCKER-START.bat`。不需要另外在Windows主機裝Node或OpenClaw；它們都在官方Linux映像裡。
+第一次建立這份獨立龍蝦時用 `3-DOCKER-INSTALL.bat`；已完成安裝後，日常只用 `4-DOCKER-START.bat`。不需要另外在Windows主機裝Node或OpenClaw；它們都在官方Linux映像裡。
 
 ## Windows先決條件（v2補充）
 
-**DOCKER-INSTALL是安裝龍蝦，不是安裝Docker Desktop。ZIP沒有內附Docker Desktop完整exe。**
+**3-DOCKER-INSTALL是安裝龍蝦，不是安裝Docker Desktop。ZIP沒有內附Docker Desktop完整exe。**
 
 尚未安裝時依序：
-1. `windows/0-INSTALL-DOCKER-DESKTOP.bat`：官方線上安裝入口。下載amd64／arm64對應安裝器，驗證Authenticode狀態與Docker Inc發行者後開啟介面。簽章無法確認則停止，不執行下載的檔案。
+1. `1-INSTALL-DOCKER-DESKTOP.bat`：官方線上安裝入口。下載amd64／arm64對應安裝器，驗證Authenticode狀態與Docker Inc發行者後開啟介面。簽章無法確認則停止，不執行下載的檔案。
 2. 由本人完成安裝畫面的權限、系統需求及授權提示；若要求重新開機先完成。從開始選單開啟Docker Desktop，完成首次設定並等待啟動。
-3. `windows/DOCKER-CHECK.bat`：只檢查Windows Docker CLI／Compose／Linux引擎；READY後才往下。
-4. `windows/DOCKER-INSTALL.bat`：現在才安裝龍蝦，並登入自己的Codex。
+3. `2-DOCKER-CHECK.bat`：只檢查Windows Docker CLI／Compose／Linux引擎；READY後才往下。
+4. `3-DOCKER-INSTALL.bat`：現在才安裝龍蝦，並登入自己的Codex。
 
 已安裝者不用重裝：新版會找PATH、新的使用者／系統PATH、Docker Desktop官方常見安裝目錄及登錄的安裝位置。只讀檢查，不永久改PATH。若只有WSL內有Docker，可直接在**那個WSL內**進入解壓資料夾執行 `bash linux/docker-install.sh`，不是從Windows視窗猜它能找到WSL的指令。
 
 `0-...`不是離線Docker分發包，不會替你接受條款、啟用WSL／BIOS／虛擬化、關閉防火牆或自動重開機。官方安裝程式很大，需要網路；下載暫存位置會在本機顯示，完成後可自行刪掉。
 
 三平台共用同一Compose與工作區規則，只有操作入口不同：
-- Windows：`windows/DOCKER-INSTALL.bat`。
+- Windows：`3-DOCKER-INSTALL.bat`。
 - Mac：`macos/DOCKER-INSTALL.command`；必要時以bash執行。
 - Linux：`bash linux/docker-install.sh`。
 
@@ -44,13 +44,13 @@ docker compose exec gateway node /app/openclaw.mjs --profile personal-lobster de
 
 Windows（終端進入解壓目錄）：
 ```bat
-windows\DOCKER-START.bat
-windows\DOCKER-START.bat dashboard
-windows\DOCKER-START.bat channels
-windows\DOCKER-START.bat doctor
-windows\DOCKER-START.bat models
-windows\DOCKER-START.bat logs
-windows\DOCKER-START.bat stop
+4-DOCKER-START.bat
+4-DOCKER-START.bat dashboard
+4-DOCKER-START.bat channels
+4-DOCKER-START.bat doctor
+4-DOCKER-START.bat models
+4-DOCKER-START.bat logs
+4-DOCKER-START.bat stop
 ```
 Mac對應 `bash macos/DOCKER-START.command <動作>`。
 Linux對應 `bash linux/docker-start.sh <動作>`。
@@ -115,7 +115,7 @@ VPS使用SSH轉發，沿用START-HERE中的方法；不用為了瀏覽Dashboard�
 ## v5 本機路徑與控制台
 Windows入口會在Compose之前拒絕UNC／映射網路分享；把整包移到本機C或D槽，不移動既有volume。解壓資料夾在D不等於Docker磁碟也在D，詳見KNOWN-ISSUES.md。
 
-若health通過但控制台需要Gateway密鑰，執行windows/DOCKER-TOKEN.bat；或在原compose.yaml同層互動終端執行：
+若health通過但控制台需要Gateway密鑰，執行5-DOCKER-TOKEN.bat；或在原compose.yaml同層互動終端執行：
 ```bash
 docker compose exec gateway node /app/openclaw.mjs --profile personal-lobster gateway auth-token --show
 ```

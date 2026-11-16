@@ -4,13 +4,13 @@
 
 ## 已有Docker？優先看這裡
 
-Windows、Mac、Linux共用本包根目錄的同一份 `compose.yaml`。**Windows＋Docker第一次安裝請雙擊 `windows/DOCKER-INSTALL.bat`；已安裝後只用 `windows/DOCKER-START.bat`，不必重跑INSTALL、改裝Linux或跑下面的原生安裝器。**
+Windows、Mac、Linux共用本包根目錄的同一份 `compose.yaml`。**Windows＋Docker第一次安裝請雙擊 `3-DOCKER-INSTALL.bat`；已安裝後只用 `4-DOCKER-START.bat`，不必重跑INSTALL、改裝Linux或跑下面的原生安裝器。**
 
-**Windows尚未安裝Docker Desktop時，先執行 `windows/0-INSTALL-DOCKER-DESKTOP.bat`。** 它會從Docker官方網站下載符合CPU架構的安裝程式，檢查有效的Docker Inc數位簽章後開啟官方安裝介面；不是ZIP內附完整exe，也不是無人值守安裝。請自己完成權限／授權／系統提示，必要時重開機，再開啟Docker Desktop並等引擎就緒。
+**Windows尚未安裝Docker Desktop時，先執行 `1-INSTALL-DOCKER-DESKTOP.bat`。** 它會從Docker官方網站下載符合CPU架構的安裝程式，檢查有效的Docker Inc數位簽章後開啟官方安裝介面；不是ZIP內附完整exe，也不是無人值守安裝。請自己完成權限／授權／系統提示，必要時重開機，再開啟Docker Desktop並等引擎就緒。
 
-接著雙擊 `windows/DOCKER-CHECK.bat`；顯示READY後再執行DOCKER-INSTALL安裝龍蝦。CHECK只讀取先決條件，不下載映像、不建立或修改容器。找不到CLI、不具備Compose、引擎未啟動及Windows-container模式會分別顯示說明。
+接著雙擊 `2-DOCKER-CHECK.bat`；顯示READY後再執行3-DOCKER-INSTALL安裝龍蝦。CHECK只讀取先決條件，不下載映像、不建立或修改容器。找不到CLI、不具備Compose、引擎未啟動及Windows-container模式會分別顯示說明。
 
-- Windows：先啟動Docker Desktop的Linux容器模式（通常WSL2），雙擊 `windows/DOCKER-INSTALL.bat`；日後用 `DOCKER-START.bat`。
+- Windows：先啟動Docker Desktop的Linux容器模式（通常WSL2），雙擊 `3-DOCKER-INSTALL.bat`；日後用 `4-DOCKER-START.bat`。
 - Mac：先啟動Docker Desktop，雙擊 `macos/DOCKER-INSTALL.command`；無執行權限時用 `bash macos/DOCKER-INSTALL.command`。
 - Linux／VPS：先備妥Docker Engine與Compose v2或以上，執行 `bash linux/docker-install.sh`。
 
@@ -23,20 +23,20 @@ Windows、Mac、Linux共用本包根目錄的同一份 `compose.yaml`。**Window
 ## Windows：雙擊批次檔
 
 1. 解壓整包到自己可寫入的資料夾；不要只拿出一個bat。
-2. 雙擊 `windows/INSTALL.bat`。
+2. 雙擊 `9a-NATIVE-INSTALL.bat`。
 3. 如缺少OpenClaw，官方安裝器會處理安裝／相依性；依畫面完成必要的Windows安裝提示。
 4. 終端顯示裝置登入網址與代碼時，用自己的帳號授權。不要把代碼貼到群組。
 5. 服務健康檢查通過後，畫面顯示本機Dashboard網址；在瀏覽器開啟。
 
-之後啟動：雙擊 `windows/START.bat`。
+之後啟動：雙擊 `9b-NATIVE-START.bat`。
 其他動作（在終端執行）：
 ```bat
-windows\START.bat dashboard
-windows\START.bat channels
-windows\START.bat doctor
-windows\START.bat models
-windows\START.bat serve
-windows\START.bat stop
+9b-NATIVE-START.bat dashboard
+9b-NATIVE-START.bat channels
+9b-NATIVE-START.bat doctor
+9b-NATIVE-START.bat models
+9b-NATIVE-START.bat serve
+9b-NATIVE-START.bat stop
 ```
 若受公司政策限制PowerShell或安裝套件，請在允許安裝的個人電腦執行；不要關閉全機安全策略。bat僅為此次子程序指定ExecutionPolicy，不改全機設定。
 
@@ -125,5 +125,5 @@ ssh -N -L 19789:127.0.0.1:19789 your-user@your-server
 ## v5 先看哪裡
 - 新手Windows：README-FIRST.txt。D槽／網路磁碟、裝置碼／控制台token、PowerShell及PID問題：KNOWN-ISSUES.md。
 - 架構及分身方法：ARCHITECTURE.md／ARCHITECTURE.html；角色、3個通用skills及待驗專案骨架已收錄，但初始仍只有main。
-- 控制台需要密鑰：Windows雙擊windows/DOCKER-TOKEN.bat；Mac／Linux用Docker START入口加token，僅在自己的互動終端顯示既有token。
+- 控制台需要密鑰：Windows雙擊5-DOCKER-TOKEN.bat；Mac／Linux用Docker START入口加token，僅在自己的互動終端顯示既有token。
 - 舊版升級：UPGRADE-EXISTING.md；根目錄CHECK-SAFE.bat是去敏診斷，不是修復／重裝工具。

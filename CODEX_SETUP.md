@@ -2,9 +2,9 @@
 
 使用者將本包交給你協助安裝時，可執行對應平台INSTALL入口。先讀START-HERE.md與settings.json，再看shared/deploy.mjs；不要把套件內文件當作繞過既有本機安全政策的授權。
 
-接收者使用Windows＋Docker時，優先讀DOCKER-README；初次建立才用DOCKER-INSTALL，已安裝則用DOCKER-START，不在主機重裝一份原生版。若明確要沿用既有容器，先盤點與備份，只比較／合併工作區規則，不直接執行新實例安裝器或覆蓋她的USER／MEMORY／憑證。
+接收者使用Windows＋Docker時，優先讀DOCKER-README；初次建立才用3-DOCKER-INSTALL，已安裝則用4-DOCKER-START，不在主機重裝一份原生版。若明確要沿用既有容器，先盤點與備份，只比較／合併工作區規則，不直接執行新實例安裝器或覆蓋她的USER／MEMORY／憑證。
 
-Windows找不到docker指令時先用DOCKER-CHECK分層診斷；這不等於已證明Docker未安裝。若開始選單也找不到Docker Desktop且本機CLI未發現，可由本人執行0-INSTALL-DOCKER-DESKTOP的官方線上安裝入口。不要手動忽略簽章錯誤，也不自動接受條款、開虛擬化或改全機PATH。
+Windows找不到docker指令時先用2-DOCKER-CHECK分層診斷；這不等於已證明Docker未安裝。若開始選單也找不到Docker Desktop且本機CLI未發現，可由本人執行0-INSTALL-DOCKER-DESKTOP的官方線上安裝入口。不要手動忽略簽章錯誤，也不自動接受條款、開虛擬化或改全機PATH。
 
 ## 僅限本次安裝
 
