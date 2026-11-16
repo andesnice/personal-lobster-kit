@@ -1,0 +1,53 @@
+name: ${COMPOSE_PROJECT_NAME:-personal-lobster}
+
+x-runtime: &runtime
+  image: ${OPENCLAW_IMAGE:-ghcr.io/openclaw/openclaw:2026.10.7}
+  labels:
+    io.personal-lobster.kit: v1
+  environment: &environment
+    HOME: /home/node
+    TZ: Asia/Taipei
+    OPENCLAW_PROFILE: personal-lobster
+    OPENCLAW_STATE_DIR: /home/node/.openclaw-personal-lobster
+    OPENCLAW_CONFIG_PATH: /home/node/.openclaw-personal-lobster/openclaw.json
+  volumes:
+    - lobster-state:/home/node/.openclaw-personal-lobster
+
+services:
+  init:
+    <<: *runtime
+    profiles: [setup]
+    user: "0:0"
+    network_mode: none
+    environment:
+      <<: *environment
+      LOBSTER_HOST_PORT: ${LOBSTER_HOST_PORT:-19789}
+    volumes:
+      - lobster-state:/home/node/.openclaw-personal-lobster
+      - type: bind
+        source: .
+        target: /kit
+        read_only: true
+    entrypoint: [node, /kit/docker/init.mjs]
+    command: []
+    restart: "no"
+
+  gateway:
+    <<: *runtime
+    user: "1000:1000"
+    init: true
+    entrypoint: [node, /app/openclaw.mjs, --profile, personal-lobster]
+    command: [gateway, run, --bind, lan, --port, "19789"]
+    ports:
+      - "127.0.0.1:${LOBSTER_HOST_PORT:-19789}:19789"
+    restart: unless-stopped
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, node, /app/openclaw.mjs, --profile, personal-lobster, health, --json]
+      interval: 30s
+      timeout: 15s
+      start_period: 30s
+      retries: 5
+
+volumes:
+  lobster-state: {}

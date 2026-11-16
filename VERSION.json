@@ -1,0 +1,22 @@
+{
+  "version": "5.0.0",
+  "date": "2026-11-16",
+  "runtime_image": "ghcr.io/openclaw/openclaw:2026.10.7",
+  "initial_agents": [
+    "main"
+  ],
+  "role_templates": [
+    "HEADQUARTERS.md",
+    "PROJECT-AGENTS.md",
+    "AUTOMATION.md",
+    "REVIEWER.md"
+  ],
+  "document_skills": [
+    "project-handoff",
+    "root-cause-debugging",
+    "review-learning"
+  ],
+  "project_scaffold": "held-only",
+  "contains_original_credentials": false,
+  "contains_original_private_memory": false
+}

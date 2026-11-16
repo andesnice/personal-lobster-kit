@@ -1,0 +1,5 @@
+{
+  "profile": "personal-lobster",
+  "port": 19789,
+  "model": "openai/gpt-6.1-sol"
+}

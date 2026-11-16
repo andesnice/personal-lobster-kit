@@ -1,0 +1,28 @@
+{
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "port": 19789,
+    "auth": {"mode": "token", "token": "@GENERATE_LOCALLY@"},
+    "controlUi": {"allowedOrigins": ["http://127.0.0.1:19789", "http://localhost:19789"]}
+  },
+  "agents": {
+    "ownership": "explicit",
+    "defaults": {
+      "model": {"primary": "openai/gpt-6.1-sol", "fallbacks": []},
+      "heartbeat": {"every": "0m"}
+    },
+    "entries": {
+      "main": {"name": "個人龍蝦", "workspace": "@OWN_WORKSPACE@"}
+    }
+  },
+  "plugins": {"entries": {"codex": {"enabled": true}}},
+  "session": {"dmScope": "per-channel-peer"},
+  "tools": {
+    "profile": "coding",
+    "fs": {"workspaceOnly": true},
+    "exec": {"mode": "ask"},
+    "elevated": {"enabled": false}
+  },
+  "memory": {"search": {"enabled": false}}
+}

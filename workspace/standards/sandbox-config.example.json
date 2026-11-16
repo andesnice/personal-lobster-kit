@@ -1,0 +1,25 @@
+{
+  "agents": {
+    "entries": {
+      "project-example": {
+        "name": "獨立專案範例（尚未啟用）",
+        "workspace": "/home/node/.openclaw-personal-lobster/projects/project-example",
+        "model": {"primary": "openai/gpt-6.1-sol", "fallbacks": []},
+        "sandbox": {
+          "mode": "all",
+          "backend": "docker",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "docker": {"network": "none", "readOnlyRoot": true, "capDrop": ["ALL"]}
+        },
+        "tools": {
+          "allow": ["read", "write", "edit", "apply_patch", "exec", "process"],
+          "deny": ["message", "sessions_list", "sessions_history", "sessions_search", "sessions_send", "sessions_spawn", "gateway", "cron", "secrets"],
+          "agentToAgent": {"send": []},
+          "elevated": {"enabled": false},
+          "sandbox": {"tools": {"allow": ["read", "write", "edit", "apply_patch", "exec", "process"], "deny": []}}
+        }
+      }
+    }
+  }
+}
